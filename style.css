@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div{
+    border:1px solid black;
+    background-color: #c9d2d3;
+    margin: 10px;
+    float: left;
+    text-align: center;
+    padding: 5px;
+    width: 50vw;
+}
+
+#deck{
+    min-height: 500px;
+}
+
+#deck img{
+    height: 100%;
+    width: auto;
+}
+
+#search{
+    width: 80%;
+}
