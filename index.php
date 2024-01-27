@@ -35,24 +35,7 @@
             $selectedCards = array();
         ?>
         <h1>Small world calculator</h1>
-        <section>
-            <div id="search_bar">
-                <form method="GET">
-                    <input type="text" id="search" name="search" placeholder="Search cards..."
-                        value="<?= htmlspecialchars($searchTerm) ?>">
-                    <input type="submit" value="Search" id="searchBtn">
-                </form>
-            </div>
-            <div id="results">
-                <?php
-                    searchCards($matchingCardsPage);
-                ?>
-            </div>
-            <div id="pagination">
-                <?php
-                    displayPagination($matchingCards, $cardsPerPage, $searchTerm);
-                ?>
-            </div>
+        <section id="deck_viewer">
             <div id="deck">
                 <!-- selected cards -->
                 <?php
@@ -75,7 +58,31 @@
                 
                 </div>
             </div>
-
+        </section>
+        <section id="card_searcher">
+            <div id="search_bar">
+                <form method="GET">
+                    <input type="text" id="search" name="search" placeholder="Insert card's name..."
+                        value="<?= htmlspecialchars($searchTerm) ?>">
+                    <input type="submit" value="Search" id="searchBtn">
+                </form>
+            </div>
+            <div id="results">
+                <?php
+                    if ($searchTerm != '') {
+                        searchCards($matchingCardsPage);
+                        if (sizeof($matchingCards) == 0){
+                            echo '<h2>No results found</h2>';
+                        }
+                    
+                ?>
+            </div>
+            <div id="pagination">
+                <?php
+                    displayPagination($matchingCards, $cardsPerPage, $searchTerm);
+                    }
+                ?>
+            </div>
         </section>
     </body>
 </html>

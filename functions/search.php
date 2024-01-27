@@ -11,6 +11,10 @@ function searchCards($matchingCards)
         $imageUrl = 'card_database/cards_images/' . $imageName;
 
         // Display the image
+        echo '<div id="card_result">';
+        echo '<button class="addCard">';
         echo '<img src="' . $imageUrl . '" alt="' . $card['name'] . '">';
+        echo '<p> ' . $card['name'] . '</p>';
+        echo '</button> </div>';
     }
 }
