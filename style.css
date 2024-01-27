@@ -24,6 +24,9 @@ section {
     height: auto;
     border-color: #2565AE;
     background-color: #f2f2f2;
+    /* center deck div */
+    display: inline-block;
+    vertical-align: top;
 }
 
 #card_searcher {
@@ -103,33 +106,51 @@ section {
     margin: 2%;
 }
 
-form {
+#card_searcher form {
     background-color: #f2f2f2;
     border-radius: 10px;
     border: 2px solid;
     border-color: gray;
 }
 
-form input {
+#card_searcher form input {
     border : none;
     padding: 2%;
 }
 
-form input[type="text"] {
+#card_searcher form input[type="text"] {
     width: 70%;
     height: 5%;
     margin: 1%;
 }
 
-form input[type="text"]:focus {
+#card_searcher form input[type="text"]:focus {
     outline: none;
 }
 
-form input[type="submit"] {
+#card_searcher form input[type="submit"] {
     width: 20%;
     height: 5%;
     border: 2px solid;
     border-color: #f2f2f2;
     border-left-color: gray;
-    border-radius: 0px;
+    border-radius: 0px; 
+}
+
+
+/* CSS for deck.php */
+#deck {
+    width: 45vw;
+    height: 100vh;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: gray;
+    padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form{
+    border: hidden;
 }

@@ -3,7 +3,6 @@
     <head>
         <title>Small world calculator</title>
         <link rel="stylesheet" href="style.css">
-        <script src="jsScripts/selectedImages.js" ></script>
     </head>
     <body>
         <?php
@@ -31,31 +30,19 @@
             $offset = ($currentPage - 1) * $cardsPerPage;
             $matchingCardsPage = array_slice($matchingCards, $offset, $cardsPerPage);
 
-            // Clicked cards
-            $selectedCards = array();
         ?>
         <h1>Small world calculator</h1>
         <section id="deck_viewer">
-            <div id="deck">
-                <!-- selected cards -->
-                <?php
-                    if (sizeof($selectedCards) > 0){
-                        echo '<h2>Selected monsters</h2>';
-                        echo '<ul>';
-                        foreach ($selectedCards as $card) {
-                            echo '<li>' . $card . '</li>';
-                        }
-                        echo '</ul>';
-                    }
-                ?>
-            </div>
+            <form method="POST" id="deckForm">
+                <div id="deck">
+                </div>
+            </form>
             <div>
-                <button id="clearBtn">Clear</button>
+                <button id="clearBtn" onclick="clearDeck()">Clear</button>
             </div>
             <div>
                 <button id="calculateBtn">Find Bridges</button>
                 <div id="bridges">
-                
                 </div>
             </div>
         </section>
@@ -85,4 +72,6 @@
             </div>
         </section>
     </body>
+    <script src="jsScripts/manageDeck.js"></script>
+    <script src="jsScripts/clearDeck.js"></script>
 </html>
