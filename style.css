@@ -13,7 +13,6 @@ h1 {
 /* sections one next to the other */
 section {
     display: inline-block;
-    vertical-align: top;
     border-radius: 10px;
     padding: 1%;
     border: 2px solid;
@@ -29,9 +28,19 @@ section {
     vertical-align: top;
 }
 
+#deck {
+    width: 45vw;
+    height: auto;
+    background-color: #f2f2f2;
+    border: hidden;
+    padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #card_searcher {
     width: 40vw;
-    height: 90vh;
+    height: 120vh;
     border-color: black;
     background-color: #2565AE;
     text-align: center;
@@ -46,6 +55,12 @@ section {
     padding: 1%;
     margin: 1%;
     font-size: 1vw;
+}
+
+#card_searcher > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #card_result {
@@ -89,11 +104,19 @@ section {
 }
 
 #results {
-    width: 100%;
-    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
     overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 1%;
+    overflow-x: hidden; 
+    height: 100vh;
+}
+
+#pagination {
+    display: flex;
+    margin: 2%;
 }
 
 #page_number {
@@ -101,9 +124,9 @@ section {
     border-radius: 10px;
     border: 2px solid;
     border-color: gray;
-    width: auto;
-    padding: 5%;
-    margin: 2%;
+    width: 2%;
+    padding: 1%;
+    margin: 1%;
 }
 
 #card_searcher form {
@@ -137,20 +160,32 @@ section {
     border-radius: 0px; 
 }
 
+form{
+    border: hidden;
+}
 
-/* CSS for deck.php */
-#deck {
-    width: 45vw;
-    height: 100vh;
+div.selectedCard {
+    width: 4vw;
+    height: 7vw;
     background-color: #f2f2f2;
     border-radius: 10px;
     border: 2px solid;
-    border-color: gray;
-    padding: 1%;
-    margin-left: auto;
-    margin-right: auto;
+    border-color: #147ae8;
+    margin : 1%;
+    padding: 4%;
+    padding-bottom: 0%;
+    display: inline-block;
+    vertical-align: bottom;
+
 }
 
-form{
-    border: hidden;
+div.selectedCard img {
+    height: 80%;
+    display: block;
+    margin:auto;
+
+}
+
+div.selectedCard.ending_point{
+    background-color: #2565AE;
 }

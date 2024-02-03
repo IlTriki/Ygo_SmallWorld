@@ -39,36 +39,36 @@
             </form>
             <div>
                 <button id="clearBtn" onclick="clearDeck()">Clear</button>
-            </div>
-            <div>
                 <button id="calculateBtn">Find Bridges</button>
-                <div id="bridges">
-                </div>
+            </div>
+            <div id="bridges">
             </div>
         </section>
         <section id="card_searcher">
-            <div id="search_bar">
-                <form method="GET">
-                    <input type="text" id="search" name="search" placeholder="Insert card's name..."
-                        value="<?= htmlspecialchars($searchTerm) ?>">
-                    <input type="submit" value="Search" id="searchBtn">
-                </form>
-            </div>
-            <div id="results">
-                <?php
-                    if ($searchTerm != '') {
-                        searchCards($matchingCardsPage);
-                        if (sizeof($matchingCards) == 0){
-                            echo '<h2>No results found</h2>';
+            <div>
+                <div id="search_bar">
+                    <form method="GET">
+                        <input type="text" id="search" name="search" placeholder="Insert card's name..."
+                            value="<?= htmlspecialchars($searchTerm) ?>">
+                        <input type="submit" value="Search" id="searchBtn">
+                    </form>
+                </div>
+                <div id="results">
+                    <?php
+                        if ($searchTerm != '') {
+                            searchCards($matchingCardsPage);
+                            if (sizeof($matchingCards) == 0){
+                                echo '<h2>No results found</h2>';
+                            }
+                        
+                    ?>
+                </div>
+                <div id="pagination">
+                    <?php
+                        displayPagination($matchingCards, $cardsPerPage, $searchTerm);
                         }
-                    
-                ?>
-            </div>
-            <div id="pagination">
-                <?php
-                    displayPagination($matchingCards, $cardsPerPage, $searchTerm);
-                    }
-                ?>
+                    ?>
+                </div>
             </div>
         </section>
     </body>
