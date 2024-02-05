@@ -1,191 +1,252 @@
-/* CSS for index.php */
-body {
-    background-color: #f2f2f2;
-    font-family: Arial, sans-serif;
+body{
+    background: linear-gradient(180deg, #1D1C25 0%, #431E3F 100%);
+    min-height: 100vh;
 }
 
-h1 {
-    color: #2565AE;
-    text-align: center;
-    font-size: 3vw;
-}
-
-/* sections one next to the other */
-section {
-    display: inline-block;
-    border-radius: 10px;
-    padding: 1%;
-    border: 2px solid;
-}
-
-#deck_viewer {
-    width: 50vw;
-    height: auto;
-    border-color: #2565AE;
-    background-color: #f2f2f2;
-    /* center deck div */
-    display: inline-block;
-    vertical-align: top;
-}
-
-#deck {
-    width: 45vw;
-    height: auto;
-    background-color: #f2f2f2;
-    border: hidden;
-    padding: 1%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#card_searcher {
-    width: 40vw;
-    height: 120vh;
-    border-color: black;
-    background-color: #2565AE;
-    text-align: center;
-}
-
-#deck_viewer button {
-    background-color: #2565AE;
-    color: white;
-    border: 2px solid;
-    border-color: #2565AE;
-    border-radius: 5px;
-    padding: 1%;
-    margin: 1%;
-    font-size: 1vw;
-}
-
-#card_searcher > div {
+header {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+}
+
+h1{
+    color: rgb(212, 206, 206);
+    font-size: 2.2rem;
+    font-weight: 700;
+    font-family: 'proxima-nova', sans-serif;
+}
+
+.input__container {
+    position: relative;
+    background: linear-gradient(180deg, #3e3c50 0%, #431E3F 100%);
+    width: 20vw;
+    padding: 10px 15px;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 22px;
+    perspective: 500px;
 }
 
-#card_result {
-    width: 12vw;
-    height: 14vw;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    border: 2px solid;
-    border-color: gray;
-    margin : 4%;
-    padding: 4%;
-    padding-bottom: 0%;
-    display: inline-block;
-    vertical-align: bottom;
+.input__button__shadow {
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: transform 400ms, background 400ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    padding: 5px;
 }
 
-
-.addCard {
-    border-style: hidden;
+.input__button__shadow:hover {
+    background: rgba(255, 255, 255, 0.411);
 }
 
-#card_result > :hover {
-    border-style: hidden;
-    border-bottom-color: #147ae8;
-    border-bottom-width: 4px;
-    border-bottom-style: solid;
+.input__search {
+    width: 100%;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    padding: 8px;
+    position: relative;
 }
 
-.addCard img {
-    width: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1%;
-}
-
-.addCard p {
-    font-size: 1vw;
-    color: #2565AE;
-    text-align: center;
-}
-
-#results {
+#deck{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 2%;
+    border: #181818 solid 5px;
+}
+
+.card {
+    --background: linear-gradient( to right, #614385    0%, #516395 100%);
+    width: 5.9rem;
+    height: 8.6rem;
+    padding: 5px;
+    margin : 1%;
+    overflow: visible;
+    background: #f7ba2b;
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+}
+   
+.card-info {
+    --color: #181818;
+    background: var(--color);
+    color: var(--color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card img{
+    width: 100%;
+}
+
+.selectedCard{
+    height: 100%;
+}
+
+.deckButton {
+    margin-right: 2%;
+    font-size: 18px;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow,transform;
+    background: linear-gradient( to right, #614385    0%, #516395 100%);
+    box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%), inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+    padding: 0 2em;
+    border-radius: 0.3em;
+    color: #fff;
+    height: 2.6em;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.deckButton:hover {
+    box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px #3c4fe0;
+    transform: translateY(-0.1em);
+}
+  
+.deckButton:active {
+    box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
+    transform: translateY(0em);
+}
+
+#deckButtons{
+    display: flex;
+    justify-content: start;
+    margin: 2%;
+}
+
+#card_searcher{
+    background-color: #1D1C25;
+    visibility: hidden;
+    position: absolute;
+    right: 2px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    z-index: 100;
+    min-width: 22vw;
+    max-width: 40vw;
+    border: #181818 solid 5px;
+}
+
+#results{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    z-index: 100;
+    min-width: 22vw;
+    max-width: 40vw;
+}
+
+#card_result{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     margin: 2%;
-    overflow-y: scroll;
-    overflow-x: hidden; 
-    height: 100vh;
+}
+
+#card_result button{
+    padding : 0;
+    margin: 0;
+    border: 0;
+    background: none;
+}
+
+#card_result button img{
+    height: 100%;
+}
+
+#card_result button:hover{
+    cursor: pointer;
 }
 
 #pagination {
+    width: 100%;
+    margin-bottom: 2%;
     display: flex;
-    margin: 2%;
+    justify-content: center;
 }
 
 #page_number {
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    border: 2px solid;
-    border-color: gray;
-    width: 2%;
-    padding: 1%;
-    margin: 1%;
-}
-
-#card_searcher form {
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    border: 2px solid;
-    border-color: gray;
-}
-
-#card_searcher form input {
-    border : none;
-    padding: 2%;
-}
-
-#card_searcher form input[type="text"] {
-    width: 70%;
-    height: 5%;
-    margin: 1%;
-}
-
-#card_searcher form input[type="text"]:focus {
-    outline: none;
-}
-
-#card_searcher form input[type="submit"] {
-    width: 20%;
-    height: 5%;
-    border: 2px solid;
-    border-color: #f2f2f2;
-    border-left-color: gray;
-    border-radius: 0px; 
-}
-
-form{
-    border: hidden;
-}
-
-div.selectedCard {
-    width: 4vw;
-    height: 7vw;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    border: 2px solid;
-    border-color: #147ae8;
-    margin : 1%;
-    padding: 4%;
-    padding-bottom: 0%;
+    appearance: button;
+    min-width: 10%;
+    background: linear-gradient( to right, #614385    0%, #516395 100%);
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
     display: inline-block;
-    vertical-align: bottom;
-
-}
-
-div.selectedCard img {
-    height: 80%;
-    display: block;
-    margin:auto;
-
-}
-
-div.selectedCard.ending_point{
-    background-color: #2565AE;
-}
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 1%;
+    outline: none;
+    overflow: visible;
+    padding: 13px 19px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+   }
+   
+   #page_number:after {
+    background-clip: padding-box;
+    background: linear-gradient( to right, #614385    0%, #516395 100%);
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+   }
+   
+   #page_number:main, #page_number:focus {
+    user-select: auto;
+   }
+   
+   #page_number:hover:not(:disabled) {
+    filter: brightness(1.1);
+   }
+   
+   #page_number:disabled {
+    cursor: auto;
+   }
+   
+   #page_number:active:after {
+    border-width: 0 0 0px;
+   }
+   
+   #page_number:active {
+    padding-bottom: 10px;
+   }

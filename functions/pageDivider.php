@@ -9,9 +9,10 @@ function displayPagination($matchingCards, $cardsPerPage, $searchTerm)
     // Show a maximum of 5 prior pages and 5 next pages
     $startPage = max(1, $currentPage - 5);
     $endPage = min($totalPages, $currentPage + 5);
-
+    echo '<button id="page_number" onclick="window.location.href=\'?page=1&search=' . urlencode($searchTerm) . '\'"> << </button>';
     for ($i = $startPage; $i <= $endPage; $i++) {
-        echo '<a id="page_number" href="?page=' . $i . '&search=' . urlencode($searchTerm) . '">' . $i . '</a>';
+        echo '<button id="page_number" onclick="window.location.href=\'?page=' . $i . '&search=' . urlencode($searchTerm) . '\'"><span>' . $i . '</span></button>';
     }
+    echo '<button id="page_number" onclick="window.location.href=\'?page=' . $totalPages . '&search=' . urlencode($searchTerm) . '\'"> >> </button>';
 }
 ?>

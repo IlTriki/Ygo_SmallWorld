@@ -26,7 +26,13 @@ function addToDeck(card, imageUrl) {
 
     // Append the card element to the deck
     const deck = document.getElementById('deck');
-    deck.appendChild(cardElement);
+    const newCard = document.createElement('div');
+    newCard.classList.add('card');
+    const newCardInfo = document.createElement('div');
+    newCardInfo.classList.add('card-info');
+    newCardInfo.appendChild(cardElement);
+    newCard.appendChild(newCardInfo);
+    deck.appendChild(newCard);
 
     // Store the selected card data in a hidden input field for further processing
     const hiddenInput = document.createElement('input');
@@ -94,7 +100,7 @@ function removeFromDeck(cardElement) {
 
     if (hiddenInput) {
         form.removeChild(hiddenInput);
-        deck.removeChild(cardElement);
+        deck.removeChild(cardElement.parentElement.parentElement);
         // Remove the card data from the deckData array
         const deckData = getDeckFromLocalStorage();
         const cardId = cardElement.querySelector('img').dataset.cardId;
@@ -102,6 +108,7 @@ function removeFromDeck(cardElement) {
         saveDeckToLocalStorage(updatedDeckData);
     }
 }
+
 
 // Function to retrieve deck data from localStorage
 function getDeckFromLocalStorage() {

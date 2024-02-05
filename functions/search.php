@@ -12,10 +12,10 @@ function searchCards($matchingCards)
 
         // Display the image
         echo '<div id="card_result">';
+        echo '<div class="card"><div class="card-info">';
         echo '<button class="addCard" onclick="addToDeck(' . htmlspecialchars(json_encode($card),
-            ENT_QUOTES, 'UTF-8') . ', \'' . $imageUrl . '\')">';
-        echo '<img src="' . $imageUrl . '" alt="' . $card['name'] . '">';
-        echo '<p> ' . $card['name'] . '</p>';
+        ENT_QUOTES, 'UTF-8') . ', \'' . $imageUrl . '\')">';
+        echo '<img src="' . $imageUrl . '" alt="' . $card['name'] . '"> </div> </div>';
         echo '</button> </div>';
     }
 }
