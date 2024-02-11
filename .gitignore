@@ -3,3 +3,4 @@
 !/card_database/cards_images/.gitkeep
 package-lock.json
 package.json
+/font/*

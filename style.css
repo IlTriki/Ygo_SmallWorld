@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Viola';
+    src: url('font/otf/VIOLA.otf') format('opentype');
+    font-weight: bolder;
+    font-style: italic;
+  }
+
 body{
     background: linear-gradient(180deg, #1D1C25 0%, #431E3F 100%);
     min-height: 100vh;
@@ -13,8 +20,12 @@ header {
 h1{
     color: rgb(212, 206, 206);
     font-size: 2.2rem;
-    font-weight: 700;
-    font-family: 'proxima-nova', sans-serif;
+    font-family: 'Viola', sans-serif;
+}
+
+input[type=text] {
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .input__container {
@@ -95,6 +106,7 @@ h1{
 
 .selectedCard{
     height: 100%;
+    cursor: pointer;
 }
 
 .deckButton {
@@ -135,13 +147,13 @@ h1{
     background-color: #1D1C25;
     visibility: hidden;
     position: absolute;
-    right: 2px;
+    left : 58%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
     z-index: 100;
-    min-width: 22vw;
+    min-width: 40vw;
     max-width: 40vw;
     border: #181818 solid 5px;
 }
@@ -181,72 +193,79 @@ h1{
 
 #pagination {
     width: 100%;
-    margin-bottom: 2%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
 }
 
 #page_number {
-    appearance: button;
-    min-width: 10%;
-    background: linear-gradient( to right, #614385    0%, #516395 100%);
-    border: solid transparent;
-    border-radius: 16px;
-    border-width: 0 0 4px;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    cursor: pointer;
+    margin-left: 1%;
+    margin-right: 1%;
+    font-size: 1rem;
     display: inline-block;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: .8px;
-    line-height: 20px;
-    margin: 1%;
-    outline: none;
-    overflow: visible;
-    padding: 13px 19px;
-    text-align: center;
-    text-transform: uppercase;
-    touch-action: manipulation;
-    transform: translateZ(0);
-    transition: filter .2s;
-    user-select: none;
-    -webkit-user-select: none;
-    vertical-align: middle;
-    white-space: nowrap;
-   }
-   
-   #page_number:after {
-    background-clip: padding-box;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow,transform;
     background: linear-gradient( to right, #614385    0%, #516395 100%);
-    border: solid transparent;
-    border-radius: 16px;
-    border-width: 0 0 4px;
-    bottom: -4px;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: -1;
-   }
-   
-   #page_number:main, #page_number:focus {
-    user-select: auto;
-   }
-   
-   #page_number:hover:not(:disabled) {
-    filter: brightness(1.1);
-   }
-   
-   #page_number:disabled {
-    cursor: auto;
-   }
-   
-   #page_number:active:after {
-    border-width: 0 0 0px;
-   }
-   
-   #page_number:active {
-    padding-bottom: 10px;
-   }
+    box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%), inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+    border-radius: 0.3em;
+    color: #fff;
+    height: 2.0em;
+    width: 3.0em;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+#page_number:hover {
+    box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px #3c4fe0;
+    transform: translateY(-0.1em);
+}
+  
+#page_number:active {
+    box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
+    transform: translateY(0em);
+}
+
+h2, h3{
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Viola', sans-serif;
+}
+
+h3{
+    font-size: 1rem;
+}
+
+#title{
+    margin: 2%;
+}
+
+.ending_point{
+    background: red;
+}
+
+#bridges{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    z-index: 100;
+}
+
+.bridge{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 40%;
+}
+
+.bridge img{
+    width: 100%;
+}
+
+.bridge .arrow{
+    width: 8%;
+}

@@ -1,4 +1,5 @@
-function addToDeck(card, imageUrl) {
+// Function to add a card to the deck
+function addCardToDeck(card, imageUrl, fromStorage = false) {
     // Access the deck viewer section
     const deckViewer = document.getElementById('deck_viewer');
 
@@ -32,7 +33,10 @@ function addToDeck(card, imageUrl) {
     newCardInfo.classList.add('card-info');
     newCardInfo.appendChild(cardElement);
     newCard.appendChild(newCardInfo);
-    deck.appendChild(newCard);
+    deck.prepend(newCard);
+    if (!fromStorage) {
+        deck.removeChild(deck.lastChild);
+    }
 
     // Store the selected card data in a hidden input field for further processing
     const hiddenInput = document.createElement('input');
@@ -59,16 +63,26 @@ function addToDeck(card, imageUrl) {
         // Remove the "ending_point" identifier from all cards in the deck
         const deckCards = deck.querySelectorAll('.selectedCard');
         deckCards.forEach((card) => {
-            card.classList.remove('ending_point');
+            card.parentElement.parentElement.classList.remove('ending_point');
         });
 
         // Add the "ending_point" identifier to the clicked card
-        cardElement.classList.add('ending_point');
+        cardElement.parentElement.parentElement.classList.add('ending_point');
     });
 
     const deckData = getDeckFromLocalStorage();
     deckData.push(card);
     saveDeckToLocalStorage(deckData);
+}
+
+// Function to add a card to the deck
+function addToDeck(card, imageUrl) {
+    addCardToDeck(card, imageUrl);
+}
+
+// Function to add a card to the deck from local storage
+function addToDeckFromStorage(card, imageUrl) {
+    addCardToDeck(card, imageUrl, true);
 }
 
 // Function to check if a card is already in the deck
@@ -83,7 +97,6 @@ function isCardAlreadyInDeck(card) {
             return true; // Card is already in the deck
         }
     }
-
     return false; // Card is not in the deck
 }
 
@@ -103,12 +116,21 @@ function removeFromDeck(cardElement) {
         deck.removeChild(cardElement.parentElement.parentElement);
         // Remove the card data from the deckData array
         const deckData = getDeckFromLocalStorage();
-        const cardId = cardElement.querySelector('img').dataset.cardId;
         const updatedDeckData = deckData.filter((card) => card.id.toString() !== cardId);
         saveDeckToLocalStorage(updatedDeckData);
+        addUnremovableCard(deck);
     }
 }
 
+// Function to add unremovable cards to the deck
+function addUnremovableCard(deck) {
+    const unremovableCard = document.createElement('div');
+    unremovableCard.classList.add('card', 'unremovable');
+    const unremovableCardInfo = document.createElement('div');
+    unremovableCardInfo.classList.add('card-info');
+    unremovableCard.appendChild(unremovableCardInfo);
+    deck.append(unremovableCard);
+} 
 
 // Function to retrieve deck data from localStorage
 function getDeckFromLocalStorage() {
@@ -123,19 +145,28 @@ function saveDeckToLocalStorage(deckData) {
 
 // Function to populate the deck on page load
 function populateDeckFromLocalStorage() {
+    // Get deck data from local storage
     const deckData = getDeckFromLocalStorage();
+    const deck = document.getElementById('deck');
 
+    // Add cards from local storage to the deck
     for (const card of deckData) {
         // Generate the image file name based on the specified format
         const imageName = (card['name'].replace([':', '/'], '')) + '_' + (card['race']) + '_' +
             (card['type']) + '_lvl' + card['level'] + '_' + (card['attribute']) + '.jpg';
 
-
         // Construct the image URL
         const imageUrl = 'card_database/cards_images/' + imageName;
-
-        addToDeck(card, imageUrl);
+        addToDeckFromStorage(card, imageUrl);
     }
+    // Add unremovable cards to fill the deck
+    const unremovableCardsToAdd = 40 - deckData.length;
+    for (let i = 0; i < unremovableCardsToAdd; i++) {
+        addUnremovableCard(deck);
+    }
+    
+    // Save the deck data back to local storage
+    saveDeckToLocalStorage(deckData);
 }
 
 // Call the function to populate the deck on page load

@@ -9,7 +9,6 @@
             // Include the functions
             require_once 'functions/search.php';
             require_once 'functions/pageDivider.php';
-            require_once 'functions/fillDeck.php';
 
             // search if set
             $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -33,7 +32,7 @@
 
         ?>
         <header>
-            <h1>SMALL WORLD CALCULATOR</h1>
+            <h1>Small World Calculator</h1>
             <div class="input__container">
                 <div class="shadow__input"></div>
                 <form method="GET" class="input__container">
@@ -55,9 +54,6 @@
                         // make the div visible
                         echo '<style> #card_searcher { visibility : visible; } </style>';
                         searchCards($matchingCardsPage);
-                        if (sizeof($matchingCards) == 0){
-                            echo '<h2>No results found</h2>';
-                        }
                     
                 ?>
             </div>
@@ -69,14 +65,11 @@
             </div>
         </section>
         <section id="deck_viewer">
+            <div id="title">
+                <h2>DECK</h2>
+            </div>
             <form method="POST" id="deckForm">
                 <div id="deck">
-                    <?php
-                        for ($i = 0; $i < 60; $i++) {
-                            echo '<div class="card"><div class="card-info">';
-                            echo "</div></div>";
-                        }
-                    ?>
                 </div>
             </form>
             <div id="deckButtons">
@@ -88,5 +81,6 @@
     </body>
     <script src="jsScripts/manageDeck.js"></script>
     <script src="jsScripts/clearDeck.js"></script>
-    <script src="jsScripts/search.js"></script>
+    <script src="jsScripts/manageSearchSpace.js"></script>
+    <script src="jsScripts/findBridges.js"></script>
 </html>
