@@ -1,5 +1,4 @@
 /node_modules
-/card_database/cards_images/*
 !/card_database/cards_images/.gitkeep
 package-lock.json
 package.json

@@ -18,6 +18,9 @@ function findBridges(){
         return;
     }
 
+    // Clear the bridges container
+    bridgesDiv.innerHTML = '';
+
     // Access the form element
     const form = deckViewer.querySelector('form');
     
